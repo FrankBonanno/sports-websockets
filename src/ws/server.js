@@ -20,7 +20,7 @@ const ONE_MB = 1024 * 1024;
 // const FIFTY_MB = 5 * TEN_MB;
 
 export function attachWebSocketServer(server) {
-  const wss = new WebSocketServer({ noServer: true, path: '/ws', maxPayload: 1024 * 1024 });
+  const wss = new WebSocketServer({ noServer: true, path: '/ws', maxPayload: ONE_MB });
 
   server.on('upgrade', async (req, socket, head) => {
     const { pathname } = new URL(req.url, `http://${req.headers.host}`);
