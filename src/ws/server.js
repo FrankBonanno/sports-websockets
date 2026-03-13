@@ -19,6 +19,8 @@ const ONE_MB = 1024 * 1024;
 // const TEN_MB = 10 * ONE_MB;
 // const FIFTY_MB = 5 * TEN_MB;
 
+const THIRTY_SECONDS = 30 * 1000;
+
 export function attachWebSocketServer(server) {
   const wss = new WebSocketServer({ noServer: true, path: '/ws', maxPayload: ONE_MB });
 
@@ -87,7 +89,7 @@ export function attachWebSocketServer(server) {
       ws.isAlive = false;
       ws.ping();
     });
-  }, 30000);
+  }, THIRTY_SECONDS);
 
   wss.on('close', () => clearInterval(interval));
 
