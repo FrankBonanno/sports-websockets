@@ -11,7 +11,6 @@ export const commentaryRouter = Router({ mergeParams: true });
 
 commentaryRouter.get('/', async (req, res) => {
   const paramsResult = matchIdParamSchema.safeParse(req.params);
-
   if (!paramsResult.success) {
     return res.status(400).json({ error: 'Invalid match ID.', details: paramsResult.error.issues });
   }
