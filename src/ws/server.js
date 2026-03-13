@@ -15,6 +15,10 @@ function broadcast(wss, payload) {
   }
 }
 
+const ONE_MB = 1024 * 1024;
+// const TEN_MB = 10 * ONE_MB;
+// const FIFTY_MB = 5 * TEN_MB;
+
 export function attachWebSocketServer(server) {
   const wss = new WebSocketServer({ noServer: true, path: '/ws', maxPayload: 1024 * 1024 });
 
