@@ -7,7 +7,7 @@ function sendJson(socket, payload) {
   socket.send(JSON.stringify(payload));
 }
 
-function broadcastToAll(wss, payload) {
+function broadcast(wss, payload) {
   for (const client of wss.clients) {
     if (client.readyState !== WebSocket.OPEN) continue;
 
@@ -88,7 +88,7 @@ export function attachWebSocketServer(server) {
   wss.on('close', () => clearInterval(interval));
 
   function broadcastMatchCreated(match) {
-    broadcastToAll(wss, { type: 'match_created', data: match });
+    broadcast(wss, { type: 'match_created', data: match });
   }
 
   return { broadcastMatchCreated };
